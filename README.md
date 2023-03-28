@@ -10,7 +10,7 @@ Web App
 MERN (Mongodb, Express, React, Node)
 
 ## Team Members
-MUHAMMAD JUNAID, Tayyab Sami, HASSAAN MANSUR, Ammar Haider
+MUHAMMAD JUNAID, TAYYAB SAMI, HASSAAN MANSUR, Ammar Haider
 
 ## Time Estimate
 2 Months
