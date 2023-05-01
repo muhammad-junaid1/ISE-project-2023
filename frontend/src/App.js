@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/homepage/HomePage.component";
-import Error404 from "./pages/error404/Error404.component";
-import History from "./pages/history/History.component";
+import HomePage from "./pages/homepage/HomePage.page";
+import Error404 from "./pages/error404/Error404.page";
+import History from "./pages/history/History.page";
 
 const routes = [
   {
@@ -20,9 +20,7 @@ function App() {
   const router = createBrowserRouter(routes);
   return (
     <>
-      <div className="wrapper">
         <RouterProvider router={router}/>
-      </div> 
     </>
   );
 }
