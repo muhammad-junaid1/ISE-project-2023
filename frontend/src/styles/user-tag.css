@@ -1,0 +1,14 @@
+.user-tag {
+    padding: 1px 3px;
+    background: white;
+    border-radius: 2px;
+    color: #742424;
+    font-weight: bold;
+    display: inline-block;
+    width: max-content;
+}
+
+.user-tag p {
+    margin: 0;
+    font-size: 13px;
+}

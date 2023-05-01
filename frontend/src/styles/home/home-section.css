@@ -1,0 +1,45 @@
+/* Section */
+.home-wrapper section {
+  padding: 50px calc(22% + 40px) 50px calc(5% + 40px);
+}
+
+.home-section_banner {
+    background: #FFA5A5;
+    padding: 25px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.home-section_banner img {
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+    width: 200px;
+}
+
+.home-section_banner h1 {
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.home-section_banner p {
+    margin: 0;
+}
+
+.home-section_posts {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.home-section_tabs {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.home-section_tabs button {
+    margin-right: 6px;
+}

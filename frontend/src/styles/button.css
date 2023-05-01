@@ -1,0 +1,26 @@
+
+button {
+  outline: none;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+}
+
+button svg {
+  padding-right: 5px; 
+}
+
+button.btn-primary {
+  background: #EC5252;
+  color: white;
+}
+
+button.btn-secondary {
+  background: #f7d9d9;
+  color: black;
+}
