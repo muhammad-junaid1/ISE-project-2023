@@ -34,6 +34,10 @@
     gap: 20px;
 }
 
+.home-section_posts .post-container {
+    width: 42% !important;
+}
+
 .home-section_tabs {
     display: flex;
     align-items: center;
