@@ -1,5 +1,5 @@
 .post-container {
-    background: rgb(255 9 9 / 55%);
+    background: rgb(0 0 0 / 55%);
     border-radius: 8px;
     padding: 15px 18px;
     width: 370px;
@@ -56,7 +56,7 @@
     height: 100%;
     width: 32%;
     z-index: 500;
-    background-color: #ffc6c6;
+    background-color: #ffa5a5;
     border-top-left-radius: 80px;
     display: flex;
     justify-content: center;
@@ -65,6 +65,14 @@
 
 .post_bloodgroup h1 {
     font-weight: 800;
-    color: red;
+    color: #ff5757;
     font-size: 36px;
+}
+
+.post_recipient {
+    background: #05d605c7;
+}
+
+.post_donor {
+    background-color: red;
 }

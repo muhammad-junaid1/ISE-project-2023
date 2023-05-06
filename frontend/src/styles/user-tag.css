@@ -1,8 +1,7 @@
 .user-tag {
-    padding: 1px 3px;
-    background: white;
+    padding: 1px 8px;
     border-radius: 2px;
-    color: #742424;
+    color: white;
     font-weight: bold;
     display: inline-block;
     width: max-content;
