@@ -1,5 +1,5 @@
 
-button {
+.btn {
   outline: none;
   border: 0;
   border-radius: 4px;
@@ -8,19 +8,29 @@ button {
   font-weight: 600;
   font-family: inherit;
   display: flex;
+  justify-content: center;
   align-items: center;
+  transition: background-color .2s ease-in-out;
 }
 
-button svg {
+.btn svg {
   padding-right: 5px; 
 }
 
-button.btn-primary {
+.btn.btn-primary {
   background: #EC5252;
   color: white;
 }
 
-button.btn-secondary {
-  background: #f7d9d9;
+.btn.btn-primary:hover {
+  background: #df2b2b;
+}
+
+.btn.full-width {
+  width: 100%;
+}
+
+.btn.btn-secondary {
+  background: #ffefef;
   color: black;
 }

@@ -1,8 +1,8 @@
 import "../styles/button.css";
 
-const Button = ({children, type}) => {
+const Button = ({children, type, style, onClick, fullWidth}) => {
     return (
-        <button className={`btn-${type}`}>{children}</button>
+        <button onClick={onClick} style={style} className={`btn btn-${type}${fullWidth ? " full-width" : ""}`}>{children}</button>
     );
 }
 

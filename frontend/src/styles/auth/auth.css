@@ -1,0 +1,156 @@
+.auth-wrapper .container
+{
+  display:flex;
+  height: 100vh;
+  align-items:center;
+  justify-content:center;
+}
+
+.auth-wrapper .form
+{
+  width:30%;
+  height: 80%;
+  padding:15px 20px;  /*try to to less */
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-wrapper header{
+  font-size: 28px;
+  font: width 600;
+  color:black;
+  text-align:center;
+  margin-bottom: 20px;
+}
+
+.auth-wrapper .form .field
+{
+  position:relative;
+   width:100%;
+   margin-top:12px;
+   border-radius:6px;  
+}
+
+.auth-wrapper .field input
+{
+   width:93%;
+   border:none;
+   outline:none;
+   border: 1px solid black;
+   padding: 12px;
+   font-size: 16px;
+   font-weight:500;
+   border-radius:8px;
+   background-color: #D9D9D9;
+}
+
+.auth-wrapper .field input:focus
+{
+  border-bottom-width:2 px;
+}
+
+.auth-wrapper .form-link
+{
+  text-align:center;
+  margin-top:10px;
+}
+
+.auth-wrapper .form-link span,
+.auth-wrapper .form-link a
+{
+  font-size:14px;
+  font-weight:400;
+  color:black;
+}
+
+.form a
+{
+  color:black;
+  text-decoration: none;
+}
+
+.form-content a:hover
+{
+  text-decoration: underline;
+}
+
+.line
+{
+  position:relative;
+  height:1px;
+  width: 100%;
+  margin:36px 0;
+  background-color:black;
+}
+
+.line::before
+{
+  content:'OR';
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  background-color:#FFF;
+  color:black;
+  padding:0 15px;
+}
+
+.media-options a
+{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.auth-wrapper a.google
+{
+  background-color:white;
+  background-color: #E2E2E2;
+  background: #818080;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.auth-wrapper .a.google .google-icon
+{
+  height:28 px;
+  width: 28 px;
+  color:blue;
+  font-size:20 px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  background-color:white ;
+}
+
+.auth-wrapper .google-icon
+{
+  position:absolute;
+  top:50%;
+  Left: 15px;
+  transform:translateY(-50%);
+  color:white;
+}
+
+.auth-wrapper .headers {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-wrapper .headers h1
+{
+  color:black;
+  margin: 0;
+  font-size:24px;
+  font-weight:bolder;
+}
+
+.auth-wrapper .headers p {
+    margin: 0;
+    color:rgba(0, 0, 0, 0.863);
+    font-size: 15px;
+    font-style: italic;
+}

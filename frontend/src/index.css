@@ -16,6 +16,10 @@ a, a:hover {
   text-decoration: none;
 }
 
+button {
+  font-family: inherit;
+}
+
 img {
   width: 100%;
   height: auto;
