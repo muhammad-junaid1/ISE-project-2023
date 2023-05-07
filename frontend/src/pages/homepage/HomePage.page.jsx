@@ -3,8 +3,8 @@ import Auth from "../auth/Auth";
 import {useStateContext} from "../../context/provider";
 
 const HomePage = () => {
-    const {User} = useStateContext();
-    if(User) {
+    const {User, isProfileCompleted} = useStateContext();
+    if(User && isProfileCompleted) {
         return <Home/>
     } else {
         return <Auth/>

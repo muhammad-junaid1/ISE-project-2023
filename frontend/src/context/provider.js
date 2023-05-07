@@ -11,7 +11,7 @@ const StateProvider = ({ children }) => {
   const [User, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [pageLoading, setPageLoading] = useState(false);
-  const [accountNotFound, setAccountNotFound] = useState(false);
+  const [isProfileCompleted, setIsProfileCompleted] = useState(true);
 
   onAuthStateChanged(auth, async (user) => {
     try {
@@ -41,7 +41,10 @@ const StateProvider = ({ children }) => {
             }
           } else {
             setAuthLoading(false);
-            setAccountNotFound(true);
+           setUser({
+            uid, email
+           });
+            setIsProfileCompleted(false);
           }
         }
       } else {
@@ -49,6 +52,16 @@ const StateProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   });
   return (
@@ -60,7 +73,7 @@ const StateProvider = ({ children }) => {
         authLoading,
         pageLoading,
         setPageLoading,
-        accountNotFound
+        accountNotFound: isProfileCompleted
       }}
     >
       {children}

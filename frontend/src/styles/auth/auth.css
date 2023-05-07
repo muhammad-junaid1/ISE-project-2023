@@ -158,3 +158,23 @@
     font-size: 15px;
     font-style: italic;
 }
+
+.auth-top-bar {
+  background: white;
+  height: 20px;
+  padding: 8px 80px;
+  position: fixed;
+  top:0;
+   left: 0;
+   width: 100%;
+   display: flex;
+   align-items: center;
+}
+
+.auth-top-bar p {
+  margin-right: 8px;
+}
+
+.finish-profile-container .auth-wrapper .form {
+  height: 65% !important;
+}
