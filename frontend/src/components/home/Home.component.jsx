@@ -4,7 +4,7 @@ import RequestsBar from "./RequestsBar.component";
 const Home = () => {
   return (
     <>
-      <div className="home-wrapper">
+      <div className="page-wrapper page-left-pad page-right-pad">
         <HomeContent/>
         <RequestsBar/>
       </div>

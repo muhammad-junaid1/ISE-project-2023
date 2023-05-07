@@ -16,8 +16,16 @@ html, body {
   z-index: 10000;
 }
 
-.app-wrapper {
-  padding: 50px calc(22% + 40px) 50px calc(5% + 40px);
+.page-left-pad {
+  padding-left: calc(40px + 5%) !important;
+}
+
+.page-right-pad {
+  padding-right: calc(22% + 40px) !important;
+}
+
+.page-wrapper {
+  padding: 50px 0;
 }
 
 a, a:hover {

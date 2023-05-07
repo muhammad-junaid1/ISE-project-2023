@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { toast } from "react-toastify";
@@ -8,16 +8,17 @@ const StateContext = createContext(null);
 
 const StateProvider = ({ children }) => {
   const BACKEND_URL = "http://localhost:5000";
-  const [User, setUser] = useState(null);
+  const [User, setUser] = useState("");
   const [authLoading, setAuthLoading] = useState(true);
-  const [pageLoading, setPageLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
   const [isProfileCompleted, setIsProfileCompleted] = useState(true);
 
-  onAuthStateChanged(auth, async (user) => {
+  function onAuthStateChange() {
+  return onAuthStateChanged(auth, async (user) => {
     try {
       if (user) {
-        const { email, uid } = user;
-        const result = await axios.get(`${BACKEND_URL}/users/${uid}`);
+        const { email, uid, photoURL } = user;
+        const result = await axios.get(`${BACKEND_URL}/users/${email}`);
         if (result.data.data) {
           if (localStorage.getItem("values")) {
             setTimeout(() => {
@@ -43,6 +44,7 @@ const StateProvider = ({ children }) => {
               ...values,
               uid,
               email,
+              photoURL
             };
             const response = await axios.post(`${BACKEND_URL}/users`, data);
             if (response.data.status) {
@@ -58,12 +60,14 @@ const StateProvider = ({ children }) => {
             setUser({
               uid,
               email,
+              photoURL
             });
             setIsProfileCompleted(false);
           }
         }
       } else {
         setAuthLoading(false);
+        setUser(null);
       }
     } catch (error) {
       console.log(error);
@@ -79,6 +83,15 @@ const StateProvider = ({ children }) => {
       });
     }
   });
+  }
+
+  useEffect(() => {
+      const unsubscribe = onAuthStateChange();
+      return () => {
+        unsubscribe();
+      };
+  }, []);
+
   return (
     <StateContext.Provider
       value={{

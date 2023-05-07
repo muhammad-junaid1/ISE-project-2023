@@ -1,9 +1,17 @@
-import "./profile.styles.css";
+import "../../styles/profile/profile-page.css";
+import { useStateContext } from "../../context/provider";
 
 const ProfilePage = () => {
+    const {User} = useStateContext();
     return (
         <>
-            <h1>Profile page</h1>
+            <div className="profile-page_wrapper">
+                <div className="profile-page_banner">
+                    <div className="page-left-pad">
+                    {/* {User.photoURL} */}
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
