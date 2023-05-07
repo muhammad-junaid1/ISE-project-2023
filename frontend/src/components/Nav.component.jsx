@@ -1,4 +1,3 @@
-
 import { IoMdAddCircle } from "react-icons/io";
 import Logo from "../assets/Logo.png";
 import AccountPicture from "../assets/account-picture.png";
@@ -9,7 +8,9 @@ import {
   AiOutlineHistory,
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import {BiLogOut} from "react-icons/bi";
 import "../styles/nav.css";
+import { logOut } from "../utils/firebase";
 
 const Navbar = () => {
     return (
@@ -46,6 +47,7 @@ const Navbar = () => {
           <div className="nav_bottom">
             <div className="nav_account">
               <img className="avatar-img" src={AccountPicture} alt="User Account" />
+              <BiLogOut onClick={logOut} size={28} color="white"/>
             </div>
           </div>
         </nav>

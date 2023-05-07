@@ -13,6 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  z-index: 1000;
 }
 
 .nav_create {
@@ -35,4 +36,19 @@
 
 .nav_account img {
   border: 3px solid rgb(177, 1, 1);
+}
+
+.nav_account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav_account img {
+  margin-bottom: 10px;
+}
+
+.nav_account svg {
+  margin-right: 7px;
+  cursor: pointer;
 }

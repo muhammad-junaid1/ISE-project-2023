@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "../../styles/auth/auth.css";
 import Button from "../../components/Button.component";
-import { signInWithGoogle } from "../../utils/firebase";
+import { logOut, signInWithGoogle } from "../../utils/firebase";
 import { useStateContext } from "../../context/provider";
 import LoadingSpinner from "../../components/LoadingSpinner.component";
 import { toast } from "react-toastify";
 import axios from "axios";
+import {BiLogOut} from "react-icons/bi";
 
 const Auth = () => {
   const [values, setValues] = useState({
@@ -47,16 +48,16 @@ const Auth = () => {
           setUser(user);
           localStorage.removeItem("values");
           setIsProfileCompleted(true);
-      toast.success("Your Profile is Finished!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+          toast.success("Your Profile is Finished!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         } else {
           console.log(response);
         }
@@ -97,8 +98,14 @@ const Auth = () => {
     return (
       <div className="finish-profile-container">
         <div className="auth-top-bar">
+        <div>
           <p>Logged in as: </p>
           <strong>{User.email}</strong>
+        </div>
+
+        <div>
+          <Button onClick={logOut} type="secondary"><BiLogOut/>Logout</Button>
+        </div>
         </div>
         <div className="auth-wrapper">
           <section className="container forms">

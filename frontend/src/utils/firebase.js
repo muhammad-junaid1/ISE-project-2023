@@ -1,6 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth, signInWithRedirect } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithRedirect,
+  signOut,
+} from "firebase/auth";
 import { toast } from "react-toastify";
 
 // Your web app's Firebase configuration
@@ -23,6 +28,38 @@ export const auth = getAuth(app);
 export const signInWithGoogle = async () => {
   try {
     await signInWithRedirect(auth, provider);
+  } catch (error) {
+    console.log(error);
+    toast.error("Something went wrong!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+};
+
+export const logOut = async () => {
+  try {
+    await signOut(auth);
+    toast.success("Logged Out Successfuly", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    localStorage.removeItem("values");
+    setTimeout(() => {
+      document.location.reload();
+    }, 3000);
   } catch (error) {
     console.log(error);
     toast.error("Something went wrong!", {

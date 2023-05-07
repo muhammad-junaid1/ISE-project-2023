@@ -19,6 +19,20 @@ const StateProvider = ({ children }) => {
         const { email, uid } = user;
         const result = await axios.get(`${BACKEND_URL}/users/${uid}`);
         if (result.data.data) {
+          if (localStorage.getItem("values")) {
+            setTimeout(() => {
+              toast.success("You already had an account on this email!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+            }, 2000);
+          }
           setUser(result.data.data);
           localStorage.removeItem("values");
           setAuthLoading(false);
@@ -41,9 +55,10 @@ const StateProvider = ({ children }) => {
             }
           } else {
             setAuthLoading(false);
-           setUser({
-            uid, email
-           });
+            setUser({
+              uid,
+              email,
+            });
             setIsProfileCompleted(false);
           }
         }
@@ -74,7 +89,7 @@ const StateProvider = ({ children }) => {
         pageLoading,
         setPageLoading,
         isProfileCompleted,
-        setIsProfileCompleted
+        setIsProfileCompleted,
       }}
     >
       {children}
