@@ -17,7 +17,7 @@ const getAllUsers = async (req, res) => {
 
 const getSingleUser = async (req, res) => {
   try {
-    const result = await user.findOne({uid: req.params.id});
+    const result = await user.findOne({email: req.params.email});
     res.json({
       status: true,
       data: result,
