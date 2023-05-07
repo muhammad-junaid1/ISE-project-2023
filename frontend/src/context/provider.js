@@ -73,7 +73,8 @@ const StateProvider = ({ children }) => {
         authLoading,
         pageLoading,
         setPageLoading,
-        accountNotFound: isProfileCompleted
+        isProfileCompleted,
+        setIsProfileCompleted
       }}
     >
       {children}

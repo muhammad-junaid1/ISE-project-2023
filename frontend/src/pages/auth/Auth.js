@@ -20,7 +20,6 @@ const Auth = () => {
     isProfileCompleted,
     setIsProfileCompleted,
     setUser,
-    setAuthLoading,
     BACKEND_URL,
   } = useStateContext();
 
@@ -47,8 +46,17 @@ const Auth = () => {
         if (user) {
           setUser(user);
           localStorage.removeItem("values");
-          setAuthLoading(false);
           setIsProfileCompleted(true);
+      toast.success("Your Profile is Finished!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
         } else {
           console.log(response);
         }
