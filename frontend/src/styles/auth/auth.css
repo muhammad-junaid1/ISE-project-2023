@@ -87,7 +87,7 @@
   height:1px;
   width: 100%;
   margin:25px 0;
-  background-color:black;
+  background-color: #ccc;
 }
 
 .line::before

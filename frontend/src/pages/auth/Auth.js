@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../styles/auth/auth.css";
 import Button from "../../components/Button.component";
 import { signInWithGoogle } from "../../utils/firebase";
 import { useStateContext } from "../../context/provider";
-import LoadingSpinner from "../../components/LoadigSpinner.component";
+import LoadingSpinner from "../../components/LoadingSpinner.component";
+import {ToastContainer, toast} from "react-toastify";
 
 const Auth = () => {
   const [values, setValues] = useState({
@@ -12,7 +13,7 @@ const Auth = () => {
     age: "",
     gender: "",
   });
-  const {authLoading} = useStateContext();
+  const {authLoading, accountNotFound} = useStateContext();
 
   const setInputValue = (event) => {
     setValues({...values, [event.target.name]: event.target.value});
@@ -23,6 +24,23 @@ const Auth = () => {
     localStorage.setItem("values", JSON.stringify(values));
     signInWithGoogle();
   }
+
+  useEffect(() => {
+    if(accountNotFound) {
+      toast.error("Account Not Found, Try creating one!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    console.log(accountNotFound)
+  }, [accountNotFound]);
+
   if(authLoading) {
     return <LoadingSpinner/>;
   } else {

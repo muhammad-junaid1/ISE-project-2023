@@ -2,8 +2,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/homepage/HomePage.page";
 import Error404 from "./pages/error404/Error404.page";
 import History from "./pages/history/History.page";
+import 'react-toastify/dist/ReactToastify.css';
 import { useStateContext } from "./context/provider";
-import LoadingSpinner from "./components/LoadigSpinner.component";
+import { ToastContainer } from "react-toastify";
+import LoadingSpinner from "./components/LoadingSpinner.component";
 
 const routes = [
   {
@@ -24,7 +26,7 @@ function App() {
   return (
     <>
         <RouterProvider router={router}/>
-
+        <ToastContainer/>
         {pageLoading && <LoadingSpinner/>}
     </>
   );

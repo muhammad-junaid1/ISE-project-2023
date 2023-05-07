@@ -11,6 +11,7 @@ const StateProvider = ({ children }) => {
   const [User, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [pageLoading, setPageLoading] = useState(false);
+  const [accountNotFound, setAccountNotFound] = useState(false);
 
   onAuthStateChanged(auth, async (user) => {
     try {
@@ -19,21 +20,28 @@ const StateProvider = ({ children }) => {
         const result = await axios.get(`${BACKEND_URL}/users/${uid}`);
         if (result.data.data) {
           setUser(result.data.data);
+          localStorage.removeItem("values");
           setAuthLoading(false);
         } else {
           const values = JSON.parse(localStorage.getItem("values"));
-          const data = {
-            ...values,
-            uid,
-            email,
-          };
-          const response = await axios.post(`${BACKEND_URL}/users`, data);
-          if (response.data.status) {
-            const user = response.data.data;
-            if (user) {
-              setUser(user);
-              setAuthLoading(false);
+          if (values) {
+            const data = {
+              ...values,
+              uid,
+              email,
+            };
+            const response = await axios.post(`${BACKEND_URL}/users`, data);
+            if (response.data.status) {
+              const user = response?.data?.data;
+              if (user) {
+                setUser(user);
+                localStorage.removeItem("values");
+                setAuthLoading(false);
+              }
             }
+          } else {
+            setAuthLoading(false);
+            setAccountNotFound(true);
           }
         }
       } else {
@@ -41,16 +49,6 @@ const StateProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
     }
   });
   return (
@@ -59,9 +57,10 @@ const StateProvider = ({ children }) => {
         User,
         setUser,
         BACKEND_URL,
-        authLoading, 
-        pageLoading, 
+        authLoading,
+        pageLoading,
         setPageLoading,
+        accountNotFound
       }}
     >
       {children}
