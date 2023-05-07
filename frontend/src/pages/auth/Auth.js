@@ -7,6 +7,7 @@ import LoadingSpinner from "../../components/LoadingSpinner.component";
 import { toast } from "react-toastify";
 import axios from "axios";
 import {BiLogOut} from "react-icons/bi";
+import BtnLoadingSpinner from "../../components/BtnLoadingSpinner";
 
 const Auth = () => {
   const [values, setValues] = useState({
@@ -15,6 +16,7 @@ const Auth = () => {
     age: "",
     gender: "",
   });
+  const [btnLoading, setBtnLoading] = useState(false);
   const {
     authLoading,
     User,
@@ -36,6 +38,7 @@ const Auth = () => {
 
   const handleCompleteProfileSubmit = async (e) => {
     try {
+      setBtnLoading(true);
       e.preventDefault();
       const data = {
         ...values,
@@ -61,6 +64,7 @@ const Auth = () => {
         } else {
           console.log(response);
         }
+        setBtnLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -74,6 +78,7 @@ const Auth = () => {
         progress: undefined,
         theme: "light",
       });
+        setBtnLoading(false);
     }
   };
 
@@ -122,6 +127,7 @@ const Auth = () => {
                       name="userName"
                       onInput={setInputValue}
                       value={values.userName}
+                      required
                       placeholder="User Name"
                     />
                   </div>
@@ -130,6 +136,7 @@ const Auth = () => {
                       type="text"
                       value={values.mobileNumber}
                       name="mobileNumber"
+                      required
                       onInput={setInputValue}
                       placeholder="Mobile Number"
                     />
@@ -140,6 +147,7 @@ const Auth = () => {
                       name="age"
                       value={values.age}
                       onInput={setInputValue}
+                      required
                       placeholder="Age"
                     />
                   </div>
@@ -148,6 +156,7 @@ const Auth = () => {
                       value={values.gender}
                       name="gender"
                       onInput={setInputValue}
+                      required
                     >
                       <option disabled value="">
                         Select Gender
@@ -158,7 +167,7 @@ const Auth = () => {
                   </div>
                   <div className="field button-field">
                     <Button type="primary" fullWidth>
-                      Get In
+                      {btnLoading ? <BtnLoadingSpinner/> : <span>Get In</span>}
                     </Button>
                   </div>
                 </form>
@@ -186,6 +195,7 @@ const Auth = () => {
                       name="userName"
                       onInput={setInputValue}
                       value={values.userName}
+                      required
                       placeholder="User Name"
                     />
                   </div>
@@ -196,6 +206,7 @@ const Auth = () => {
                       name="mobileNumber"
                       onInput={setInputValue}
                       placeholder="Mobile Number"
+                      required
                     />
                   </div>
                   <div className="field input-field">
@@ -203,6 +214,7 @@ const Auth = () => {
                       type="number"
                       name="age"
                       value={values.age}
+                      required
                       onInput={setInputValue}
                       placeholder="Age"
                     />
@@ -212,6 +224,7 @@ const Auth = () => {
                       value={values.gender}
                       name="gender"
                       onInput={setInputValue}
+                      required
                     >
                       <option disabled value="">
                         Select Gender
