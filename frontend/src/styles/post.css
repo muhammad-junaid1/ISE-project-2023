@@ -70,14 +70,5 @@
 }
 
 .post-container button:hover {
-    background: #EC5252;
     color: white;
-}
-
-.post_recipient {
-    background: #05d605c7;
-}
-
-.post_donor {
-    background-color: red;
 }

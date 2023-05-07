@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../styles/post.css";
 import UserTag from "./UserTag.component";
 import { MdOutlineLocationOn } from "react-icons/md";
@@ -5,18 +6,13 @@ import { IoMdMale, IoMdFemale, IoIosCall } from "react-icons/io";
 import { BiUser } from "react-icons/bi";
 import Button from "./Button.component";
 
-const Post = ({data}) => {
+const Post = ({ data }) => {
+  const [hover, setHover] = useState(false);
   return (
     <>
       <div className="post-container">
         <div className="post-header">
-          <img
-            className="avatar-img"
-            src={
-              data.imgSrc
-            }
-            alt="User"
-          />
+          <img className="avatar-img" src={data.imgSrc} alt="User" />
           <div>
             <p className="post-header_username">{data.username}</p>
             <UserTag type={data.type} />
@@ -25,10 +21,16 @@ const Post = ({data}) => {
 
         <div className="post-body">
           <div className="post-body_item">
-            <MdOutlineLocationOn size={22} /><p>{data.location}</p>
+            <MdOutlineLocationOn size={22} />
+            <p>{data.location}</p>
           </div>
           <div className="post-body_item">
-           {data.gender === "Male" ? <IoMdMale size={22} /> : <IoMdFemale size={22}/>} <p>{data.gender}</p>
+            {data.gender === "Male" ? (
+              <IoMdMale size={22} />
+            ) : (
+              <IoMdFemale size={22} />
+            )}{" "}
+            <p>{data.gender}</p>
           </div>
           <div className="post-body_item">
             <BiUser size={22} /> <p>{data.age} years old</p>
@@ -36,7 +38,18 @@ const Post = ({data}) => {
         </div>
 
         <div className="post-footer">
-          <Button type="secondary">
+          <Button
+            type="secondary"
+            style={{
+              background: hover
+                ? data.type === "Donor"
+                  ? "red"
+                  : "#05d605c7"
+                : "",
+            }}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
             <IoIosCall size={18} />
             Contact
           </Button>

@@ -15,6 +15,7 @@ const Auth = () => {
     mobileNumber: "",
     age: "",
     gender: "",
+    location: ""
   });
   const [btnLoading, setBtnLoading] = useState(false);
   const {
@@ -105,7 +106,7 @@ const Auth = () => {
         <div className="auth-top-bar">
         <div>
           <p>Logged in as: </p>
-          <strong>{User.email}</strong>
+          <strong>{User?.email}</strong>
         </div>
 
         <div>
@@ -149,6 +150,16 @@ const Auth = () => {
                       onInput={setInputValue}
                       required
                       placeholder="Age"
+                    />
+                  </div>
+                  <div className="field input-field">
+                    <input
+                      type="text"
+                      name="location"
+                      value={values.location}
+                      onInput={setInputValue}
+                      required
+                      placeholder="Location"
                     />
                   </div>
                   <div className="field input-field">
@@ -217,6 +228,16 @@ const Auth = () => {
                       required
                       onInput={setInputValue}
                       placeholder="Age"
+                    />
+                  </div>
+                  <div className="field input-field">
+                    <input
+                      type="text"
+                      name="location"
+                      value={values.location}
+                      onInput={setInputValue}
+                      required
+                      placeholder="Location"
                     />
                   </div>
                   <div className="field input-field">

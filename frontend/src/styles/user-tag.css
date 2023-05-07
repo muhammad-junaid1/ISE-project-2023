@@ -11,3 +11,11 @@
     margin: 0;
     font-size: 13px;
 }
+
+.user_recipient {
+    background: #05d605c7;
+}
+
+.user_donor {
+    background-color: red;
+}
