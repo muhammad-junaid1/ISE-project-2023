@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useStateContext } from "./context/provider";
 import { ToastContainer } from "react-toastify";
 import LoadingSpinner from "./components/LoadingSpinner.component";
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip'
 
 const routes = [
   {
@@ -26,6 +28,7 @@ function App() {
   return (
     <>
         <RouterProvider router={router}/>
+        <Tooltip anchorSelect=".tooltip"/>
         <ToastContainer/>
         {pageLoading && <LoadingSpinner/>}
     </>

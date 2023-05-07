@@ -18,11 +18,11 @@ const Navbar = () => {
         <nav>
           <div className="nav_top">
             <div className="nav_logo">
-              <a href="/">
+              <a className="tooltip" data-tooltip-content="Logo" href="/">
                 <img src={Logo} alt="Website's Logo" />
               </a>
             </div>
-            <div className="nav_create">
+            <div className="nav_create tooltip" data-tooltip-content="Create Post">
               <IoMdAddCircle
                 style={{ cursor: "pointer" }}
                 size={38}
@@ -30,24 +30,24 @@ const Navbar = () => {
               />
             </div>
             <div className="nav_items">
-              <NavLink to="/">
+              <NavLink to="/" className="tooltip" data-tooltip-content="Home Page">
                 <AiFillHome color="#f7baba" size={25} />
               </NavLink>
-              <NavLink to="/search">
+              <NavLink to="/search" className="tooltip" data-tooltip-content="Search Page">
                 <AiOutlineSearch color="#f7baba" size={25} />
               </NavLink>
-              <NavLink to="/chat">
+              <NavLink to="/chat" className="tooltip" data-tooltip-content="Chat">
                 <AiOutlineMessage color="#f7baba" size={25} />
               </NavLink>
-              <NavLink to="/history">
+              <NavLink to="/history"  className="tooltip" data-tooltip-content="History page">
                 <AiOutlineHistory color="#f7baba" size={25} />
               </NavLink>
             </div>
           </div>
           <div className="nav_bottom">
             <div className="nav_account">
-              <img className="avatar-img" src={AccountPicture} alt="User Account" />
-              <BiLogOut onClick={logOut} size={28} color="white"/>
+              <img className="avatar-img tooltip" data-tooltip-content="Visit Profile" src={AccountPicture} alt="User Account" />
+              <BiLogOut className="tooltip" data-tooltip-content="Logout" onClick={logOut} size={28} color="white"/>
             </div>
           </div>
         </nav>

@@ -12,6 +12,10 @@ html, body {
   scroll-behavior: smooth;
 }
 
+.react-tooltip {
+  z-index: 10000;
+}
+
 a, a:hover {
   text-decoration: none;
 }
