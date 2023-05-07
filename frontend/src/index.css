@@ -16,6 +16,10 @@ html, body {
   z-index: 10000;
 }
 
+.app-wrapper {
+  padding: 50px calc(22% + 40px) 50px calc(5% + 40px);
+}
+
 a, a:hover {
   text-decoration: none;
 }

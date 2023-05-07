@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 import {BiLogOut} from "react-icons/bi";
 import "../styles/nav.css";
 import { logOut } from "../utils/firebase";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -39,14 +40,14 @@ const Navbar = () => {
               <NavLink to="/chat" className="tooltip" data-tooltip-content="Chat">
                 <AiOutlineMessage color="#f7baba" size={25} />
               </NavLink>
-              <NavLink to="/history"  className="tooltip" data-tooltip-content="History page">
+              <NavLink to="/profile"  className="tooltip" data-tooltip-content="History page">
                 <AiOutlineHistory color="#f7baba" size={25} />
               </NavLink>
             </div>
           </div>
           <div className="nav_bottom">
             <div className="nav_account">
-              <img className="avatar-img tooltip" data-tooltip-content="Visit Profile" src={AccountPicture} alt="User Account" />
+              <Link to="/profile"><img className="avatar-img tooltip" data-tooltip-content="Visit Profile" src={AccountPicture} alt="User Account" /></Link>
               <BiLogOut className="tooltip" data-tooltip-content="Logout" onClick={logOut} size={28} color="white"/>
             </div>
           </div>
