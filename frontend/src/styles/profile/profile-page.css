@@ -52,3 +52,13 @@
 .profile-page_banner-right {
     font-weight: bold;
 }
+
+.profile-page_content {
+    padding-bottom: 60px;
+}
+
+.profile-page_content-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
