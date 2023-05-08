@@ -13,9 +13,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const userRouter = require("./routes/user.route");
+const postRouter = require("./routes/post.route");
 
 app.get("/", (req, res) => {
     res.send("Homepage");
 })
 
 app.use("/users", userRouter);
+app.use("/posts", postRouter);
