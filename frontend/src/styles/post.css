@@ -2,7 +2,6 @@
     background: rgb(236 100 100);
     border-radius: 8px;
     padding: 15px 18px;
-    width: 370px;
     color: white;
     position: relative;
 }
@@ -15,7 +14,6 @@
 .post-header_username {
     font-weight: bold;
     margin: 0;
-    margin-bottom: 3px;
     font-size: 18px;
 }
 
@@ -55,7 +53,7 @@
     bottom: 0;
     height: 100%;
     width: 32%;
-    z-index: 500;
+    z-index: 10;
     background-color: #ffa5a5;
     border-top-left-radius: 80px;
     display: flex;
@@ -72,3 +70,34 @@
 .post-container button:hover {
     color: white;
 }
+
+.post-loading-container {
+    height: 225px;
+    background-color: lightgrey;
+    animation: loadingAnimation 1s infinite;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.post-loading-container .flash {
+    position: absolute;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    background-color: white;
+    animation: flashAnimation 1s infinite;
+  }
+
+ @keyframes flashAnimation {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }

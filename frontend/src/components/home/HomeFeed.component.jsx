@@ -1,69 +1,76 @@
+import { useEffect, useState } from "react";
 import Button from "../Button.component";
 import Post from "../Post.component";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { useStateContext } from "../../context/provider";
 
 const HomeFeed = () => {
-    return (
-        <>
-            <div className="home-section_tabs">
-                <Button type="primary">All</Button>
-                <Button type="secondary">Donors</Button>
-                <Button type="secondary">Recipients</Button>
-            </div>
+  const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState(null);
+  const { BACKEND_URL } = useStateContext();
+  const [activeBtn, setActiveBtn] = useState("All");
 
-            <div className="home-section_posts">
-                <Post data={{
-                    imgSrc: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000",
-                    username: "Tayyab Ali Kamran",
-                    type: "Recipient",
-                    location: "Blue Area, Islamabad",
-                    gender: "Male",
-                    age: 20,
-                    bloodgroup: "A+"
-                }
-                }/>
-                <Post data={{
-                    imgSrc: "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66-s1100-c50.jpg",
-                    username: "Hassaan Mansur",
-                    type: "Donor",
-                    location: "G13 Markaz, Islamabad",
-                    gender: "Female",
-                    age: 18,
-                    bloodgroup: "B-"
-                }
-                }/>
-                <Post data={{
-                    imgSrc: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000",
-                    username: "Tayyab Ali Kamran",
-                    type: "Recipient",
-                    location: "Blue Area, Islamabad",
-                    gender: "Male",
-                    age: 20,
-                    bloodgroup: "A+"
-                }
-                }/>
-                <Post data={{
-                    imgSrc: "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66-s1100-c50.jpg",
-                    username: "Hassaan Mansur",
-                    type: "Donor",
-                    location: "G13 Markaz, Islamabad",
-                    gender: "Female",
-                    age: 18,
-                    bloodgroup: "B-"
-                }
-                }/>
-                <Post data={{
-                    imgSrc: "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66-s1100-c50.jpg",
-                    username: "Hassaan Mansur",
-                    type: "Donor",
-                    location: "G13 Markaz, Islamabad",
-                    gender: "Female",
-                    age: 18,
-                    bloodgroup: "B-"
-                }
-                }/>
-            </div>
-        </>
-    );
-}
+  const handleChangeTab = (btn) => {
+    setActiveBtn(btn);
+    if (btn === "All") {
+      setFilteredPosts(posts);
+    } else if (btn === "Donors") {
+      setFilteredPosts(posts.filter((post) => post.type === "donor"));
+    } else {
+      setFilteredPosts(posts.filter((post) => post.type === "recipient"));
+    }
+  };
+
+  const fetchPosts = async () => {
+    try {
+      const result = await axios.get(`${BACKEND_URL}/posts`);
+      setPosts(result.data.data);
+      setFilteredPosts(result.data.data);
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  return (
+    <>
+      <div className="home-section_tabs">
+        {["All", "Donors", "Recipients"].map((btn) => {
+          return (
+            <Button
+              onClick={() => handleChangeTab(btn)}
+              type={btn === activeBtn ? "primary" : "secondary"}
+            >
+              {btn}
+            </Button>
+          );
+        })}
+      </div>
+
+      <div className="home-section_posts">
+        {filteredPosts && [
+          filteredPosts.length > 0 ?
+            filteredPosts.map((post) => {
+              return <Post key={post.user} data={post} />;
+            }) : <strong style={{textAlign: "center", color:"red"}}>Sorry, No Posts to Show!</strong>
+        ]}
+      </div>
+    </>
+  );
+};
 
 export default HomeFeed;

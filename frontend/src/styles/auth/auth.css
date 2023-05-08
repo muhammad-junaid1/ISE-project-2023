@@ -26,7 +26,7 @@
   margin-bottom: 15px;
 }
 
-.auth-wrapper .form .field
+.field
 {
   position:relative;
    width:100%;
@@ -34,9 +34,9 @@
    border-radius:6px;  
 }
 
-.auth-wrapper .field input, .auth-wrapper .field select
+.field input, .form select
 {
-   width:93%;
+  width: 100%;
    border:none;
    outline:none;
    border: 1px solid black;
@@ -47,11 +47,7 @@
    background-color: #D9D9D9;
 }
 
-.auth-wrapper .field select {
-  width: 100% !important;
-}
-
-.auth-wrapper .field input:focus
+.field input:focus
 {
   border-bottom-width:2 px;
 }

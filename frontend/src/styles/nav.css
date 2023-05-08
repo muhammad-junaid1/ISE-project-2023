@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .nav_create {
@@ -51,4 +51,22 @@
 .nav_account svg {
   margin-right: 7px;
   cursor: pointer;
+}
+
+.create-post-modal .field {
+  margin-top: 10px !important;
+}
+
+.create-post-modal h3 {
+  margin: 0;
+}
+
+.create-post-modal .modal-footer {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.create-post-modal .modal-footer button:first-child {
+  margin-right: 4px;
 }
