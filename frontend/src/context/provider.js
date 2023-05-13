@@ -16,6 +16,7 @@ const StateProvider = ({ children }) => {
   function onAuthStateChange() {
   return onAuthStateChanged(auth, async (user) => {
     try {
+      console.log(user)
       if (user) {
         const { email, uid, photoURL } = user;
         const result = await axios.get(`${BACKEND_URL}/users/${email}`);

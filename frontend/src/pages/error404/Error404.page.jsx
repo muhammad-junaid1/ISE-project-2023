@@ -3,7 +3,9 @@ import "./error404.styles.css";
 const Error404 = () => {
     return (
         <>
-            <h1>ERROR 404 - Not Found :(</h1>
+            <div className="error-404-container page-left-pad">
+                <h1>Page Not Found :(</h1>
+            </div>
         </>
     );
 }

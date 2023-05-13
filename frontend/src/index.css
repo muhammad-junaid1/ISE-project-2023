@@ -17,6 +17,10 @@ html, body {
   scroll-behavior: smooth;
 }
 
+ .Toastify {
+    z-index: 999999;
+}
+
 .react-tooltip {
   z-index: 10000;
 }
