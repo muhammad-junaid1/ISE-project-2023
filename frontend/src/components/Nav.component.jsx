@@ -14,9 +14,11 @@ import "../styles/nav.css";
 import { logOut } from "../utils/firebase";
 import { Link } from "react-router-dom";
 import CreatePostModal from "./CreatePostModal";
+import { useStateContext } from "../context/provider";
 
 const Navbar = () => {
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
+  const {User} = useStateContext();
 
   const closeCreatePostModal = () => {
     setShowCreatePostModal(false);
@@ -74,7 +76,7 @@ const Navbar = () => {
               <img
                 className="avatar-img tooltip"
                 data-tooltip-content="Visit Profile"
-                src={AccountPicture}
+                src={User?.photoURL}
                 alt="User Account"
               />
             </Link>
