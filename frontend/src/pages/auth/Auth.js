@@ -128,8 +128,9 @@ const Auth = () => {
                       name="userName"
                       onInput={setInputValue}
                       value={values.userName}
-                      required
+                      required autoComplete="off"
                       placeholder="User Name"
+                      autoComplete="off"
                     />
                   </div>
                   <div className="field input-field">
@@ -137,7 +138,7 @@ const Auth = () => {
                       type="text"
                       value={values.mobileNumber}
                       name="mobileNumber"
-                      required
+                      required autoComplete="off"
                       onInput={setInputValue}
                       placeholder="Mobile Number"
                     />
@@ -148,7 +149,7 @@ const Auth = () => {
                       name="age"
                       value={values.age}
                       onInput={setInputValue}
-                      required
+                      required autoComplete="off"
                       placeholder="Age"
                     />
                   </div>
@@ -158,7 +159,7 @@ const Auth = () => {
                       name="location"
                       value={values.location}
                       onInput={setInputValue}
-                      required
+                      required autoComplete="off"
                       placeholder="Location"
                     />
                   </div>
@@ -167,7 +168,7 @@ const Auth = () => {
                       value={values.gender}
                       name="gender"
                       onInput={setInputValue}
-                      required
+                      required autoComplete="off"
                     >
                       <option disabled value="">
                         Select Gender
@@ -206,7 +207,7 @@ const Auth = () => {
                       name="userName"
                       onInput={setInputValue}
                       value={values.userName}
-                      required
+                      required autoComplete="off"
                       placeholder="User Name"
                     />
                   </div>
@@ -217,7 +218,7 @@ const Auth = () => {
                       name="mobileNumber"
                       onInput={setInputValue}
                       placeholder="Mobile Number"
-                      required
+                      required autoComplete="off"
                     />
                   </div>
                   <div className="field input-field">
@@ -225,7 +226,7 @@ const Auth = () => {
                       type="number"
                       name="age"
                       value={values.age}
-                      required
+                      required autoComplete="off"
                       onInput={setInputValue}
                       placeholder="Age"
                     />
@@ -236,7 +237,7 @@ const Auth = () => {
                       name="location"
                       value={values.location}
                       onInput={setInputValue}
-                      required
+                      required autoComplete="off"
                       placeholder="Location"
                     />
                   </div>
@@ -245,7 +246,7 @@ const Auth = () => {
                       value={values.gender}
                       name="gender"
                       onInput={setInputValue}
-                      required
+                      required autoComplete="off"
                     >
                       <option disabled value="">
                         Select Gender

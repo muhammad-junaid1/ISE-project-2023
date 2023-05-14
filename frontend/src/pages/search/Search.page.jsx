@@ -2,8 +2,8 @@
 const Search = () => {
     return (
         <>
-            <div className="page-wrapper page-pad-left">
-
+            <div className="page-wrapper page-left-pad">
+                <h1>Search Page</h1>
             </div>
         </>
     );
