@@ -11,6 +11,7 @@ const Search = () => {
   const [searchInputVal, setSearchInputVal] = useState("");
   const { BACKEND_URL } = useStateContext();
   const [posts, setPosts] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
   const [filters, setFilters] = useState({
     gender: "",
     location: "",
@@ -53,8 +54,7 @@ const Search = () => {
         post.gender.toLowerCase().includes(searchInputVal) ||
         post.type.toLowerCase().includes(searchInputVal) ||
         post.location.toLowerCase().includes(searchInputVal) ||
-        post.bloodGroup.toLowerCase().includes(searchInputVal) || 
-        String(post.age).toLowerCase().includes(searchInputVal)
+        post.bloodGroup.toLowerCase().includes(searchInputVal)
       );
     });
 
@@ -91,7 +91,7 @@ const Search = () => {
             </strong>
         );
       }
-      return filtered.map((post) => <Post data={post} key={post.user} />);
+      setFilteredItems(filtered);
     } else {
       return (
         <strong style={{ textAlign: "center", color: "red" }}>
@@ -108,6 +108,10 @@ const Search = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  useEffect(() => {
+    getSearchedPosts();
+  }, [searchInputVal, filters]);
   return (
     <>
       <div className="page-wrapper page-left-pad">
@@ -218,7 +222,7 @@ const Search = () => {
           </h2>
           <div className="profile-page_content-items" style={{ marginTop: 15 }}>
             {searchInputVal || Object.values(filters).some((filter) => filter)
-              ? getSearchedPosts()
+              ? filteredItems.map((post) => <Post key={post.user} data={post}/>)
               : posts.map((post) => <Post key={post.user} data={post} />)}
           </div>
         </div>
