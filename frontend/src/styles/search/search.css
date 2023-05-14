@@ -1,0 +1,15 @@
+.search-page_filters {
+    display: flex;
+    align-items: center;
+}
+
+.search-page_filters > div {
+    width: max-content;  
+    margin-right: 5px;  
+}
+
+.search-page_filters > div select, .search-page_filters > div option {
+    padding: 3px !important;
+    background: black !important;
+    color: white !important;
+}

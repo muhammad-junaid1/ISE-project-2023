@@ -34,7 +34,7 @@
    border-radius:6px;  
 }
 
-.field input, .form select
+.field input, .field select
 {
   width: 100%;
    border:none;
