@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const app = require("./index");
 
-    const mongodb_uri = process.env.mongodb_uri;
+    const mongodb_uri = "mongodb+srv://mjunaidswe:iseproject@cluster0.3oomotn.mongodb.net?retryWrites=true&w=majority";
     mongoose.connect(mongodb_uri)
     .then(() => {
         console.log("Database Connected");
