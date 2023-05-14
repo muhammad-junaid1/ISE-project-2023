@@ -7,6 +7,7 @@ import { IoMdMale, IoMdFemale, IoIosCall } from "react-icons/io";
 import { BiUser } from "react-icons/bi";
 import { useStateContext } from "../context/provider";
 import Button from "./Button.component";
+import { Link } from "react-router-dom";
 import {toast} from "react-toastify";
 
 const Post = ({ data, fullWidth }) => {
@@ -73,21 +74,23 @@ const Post = ({ data, fullWidth }) => {
         </div>
 
         <div className="post-footer">
-          <Button
-            type="secondary"
-            style={{
-              background: hover
-                ? data.type === "donor"
-                  ? "red"
-                  : "#05d605c7"
-                : "",
-            }}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
-            <IoIosCall size={18} />
-            Contact
-          </Button>
+          <Link to={`/chat/${data.user}`}>
+            <Button
+              type="secondary"
+              style={{
+                background: hover
+                  ? data.type === "donor"
+                    ? "red"
+                    : "#05d605c7"
+                  : "",
+              }}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              <IoIosCall size={18} />
+              Contact
+            </Button>
+          </Link>
         </div>
 
         <div className="post_bloodgroup">

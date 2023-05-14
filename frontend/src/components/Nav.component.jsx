@@ -56,7 +56,7 @@ const Navbar = () => {
             >
               <AiOutlineSearch color="#f7baba" size={25} />
             </NavLink>
-            <NavLink to="/chat" className="tooltip" data-tooltip-content="Chat">
+            <NavLink to="/chat/me" className="tooltip" data-tooltip-content="Chat">
               <AiOutlineMessage color="#f7baba" size={25} />
             </NavLink>
             <NavLink

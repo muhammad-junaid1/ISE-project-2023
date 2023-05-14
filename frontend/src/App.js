@@ -10,6 +10,7 @@ import { Tooltip } from "react-tooltip";
 import Nav from "./components/Nav.component";
 import ProfilePage from "./pages/profile/Profile.page";
 import SearchPage from "./pages/search/Search.page";
+import ChatPage from "./pages/chat/Chat.page";
 import { Routes, Route } from "react-router";
 import { useLocation } from "react-router";
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/chat/:user" element={<ChatPage />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <ToastContainer />
