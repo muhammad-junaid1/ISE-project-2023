@@ -12,7 +12,6 @@ const HomeFeed = () => {
   const [activeBtn, setActiveBtn] = useState("All");
 
   const handleChangeTab = (btn) => {
-    setActiveBtn(btn);
     if (btn === "All") {
       setFilteredPosts(posts);
     } else if (btn === "Donors") {
@@ -20,6 +19,7 @@ const HomeFeed = () => {
     } else {
       setFilteredPosts(posts.filter((post) => post.type === "recipient"));
     }
+    setActiveBtn(btn);
   };
 
   const fetchPosts = async () => {
@@ -64,8 +64,8 @@ const HomeFeed = () => {
       <div className="home-section_posts">
         {filteredPosts && [
           filteredPosts.length > 0 ?
-            filteredPosts.map((post) => {
-              return <Post key={post.user} data={post} />;
+            filteredPosts.map((post, index) => {
+              return <Post key={index} data={post} />;
             }) : <strong style={{textAlign: "center", color:"red"}}>Sorry, No Posts to Show!</strong>
         ]}
       </div>

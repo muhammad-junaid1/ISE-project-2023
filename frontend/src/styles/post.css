@@ -1,5 +1,5 @@
 .post-container {
-    background: rgb(236 100 100);
+    background: #b31010;
     border-radius: 8px;
     padding: 15px 18px;
     color: white;
@@ -54,7 +54,7 @@
     height: 100%;
     width: 32%;
     z-index: 10;
-    background-color: #ffa5a5;
+    background: #800000;
     border-top-left-radius: 80px;
     display: flex;
     justify-content: center;
@@ -63,7 +63,7 @@
 
 .post_bloodgroup h1 {
     font-weight: 800;
-    color: #ff5757;
+    color: white;
     font-size: 36px;
 }
 

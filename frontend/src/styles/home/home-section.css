@@ -1,7 +1,8 @@
 /* Section */
 
 .home-section_banner {
-    background: #FFA5A5;
+    background-color: #d33838;
+    color: white;
     padding: 25px;
     border-radius: 8px;
     position: relative;
