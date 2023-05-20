@@ -11,6 +11,7 @@ const Search = () => {
   const [searchInputVal, setSearchInputVal] = useState("");
   const { BACKEND_URL } = useStateContext();
   const [posts, setPosts] = useState([]);
+  const [noResults, setNoResults] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]);
   const [filters, setFilters] = useState({
     gender: "",
@@ -23,6 +24,7 @@ const Search = () => {
     try {
       const result = await axios.get(`${BACKEND_URL}/posts`);
       setPosts(result.data.data);
+      setFilteredItems(result.data.data);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong!", {
@@ -48,17 +50,20 @@ const Search = () => {
   };
 
   const getSearchedPosts = () => {
-    let filtered = posts.filter((post) => {
-      return (
-        post.user.toLowerCase().includes(searchInputVal) ||
-        post.gender.toLowerCase().includes(searchInputVal) ||
-        post.type.toLowerCase().includes(searchInputVal) ||
-        post.location.toLowerCase().includes(searchInputVal) ||
-        post.bloodGroup.toLowerCase().includes(searchInputVal)
-      );
-    });
+    let filtered = posts;
 
-    if (filtered.length > 0) {
+    if(searchInputVal) {
+      filtered = filtered.filter((post) => {
+      return (
+          post.user.toLowerCase().includes(searchInputVal) ||
+          post.gender.toLowerCase().includes(searchInputVal) ||
+          post.type.toLowerCase().includes(searchInputVal) ||
+          post.location.toLowerCase().includes(searchInputVal) ||
+          post.bloodGroup.toLowerCase().includes(searchInputVal)
+        );
+      });
+    }
+
       if (filters.gender) {
         filtered = filtered.filter(
           (post) => post.gender.toLowerCase() === filters.gender.toLowerCase()
@@ -84,21 +89,14 @@ const Search = () => {
           (post) => post.type.toLowerCase() === filters.type.toLowerCase()
         );
       }
+      
       if(filtered.length === 0) {
-        return (
-            <strong style={{ textAlign: "center", color: "red" }}>
-            Sorry, No Posts Found!
-            </strong>
-        );
+        setFilteredItems([]);
+        setNoResults(true);
+      } else {
+        setNoResults(false);
+        setFilteredItems(filtered);
       }
-      setFilteredItems(filtered);
-    } else {
-      return (
-        <strong style={{ textAlign: "center", color: "red" }}>
-          Sorry, No Posts Found!
-        </strong>
-      );
-    }
   };
 
   const handleChangeFilter = (event) => {
@@ -110,7 +108,9 @@ const Search = () => {
   }, []);
 
   useEffect(() => {
-    getSearchedPosts();
+    if(searchInputVal || Object.values(filters).some((filter) => filter)) {
+      getSearchedPosts();
+    }
   }, [searchInputVal, filters]);
   return (
     <>
@@ -221,9 +221,12 @@ const Search = () => {
               : (Object.values(filters).some((post) => post) ? "Filter Results" :"Recent Posts")}
           </h2>
           <div className="profile-page_content-items" style={{ marginTop: 15 }}>
+          {noResults &&  <strong style={{ textAlign: "center", color: "red" }}>
+            Sorry, No Posts Found!
+            </strong>}
             {searchInputVal || Object.values(filters).some((filter) => filter)
-              ? filteredItems.map((post) => <Post key={post.user} data={post}/>)
-              : posts.map((post) => <Post key={post.user} data={post} />)}
+              ? filteredItems.map((post, index) => <Post key={index} data={post}/>)
+              : posts.map((post, index) => <Post key={index} data={post} />)}
           </div>
         </div>
       </div>
